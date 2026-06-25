@@ -45,10 +45,10 @@ jobs:
         uses: actions/delete-package-versions@v5
         continue-on-error: true
         with:
-          package-name: "@hookim/package-test"
+          owner: "hookim"
+          package-name: "package-test"
           package-type: "npm"
           version-name-contains: "dev"
           min-versions-to-keep: 2
           delete-only-pre-releases: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
+          token: ${{ secrets.GH_ACCESS_TOKEN }}
