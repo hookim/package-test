@@ -31,7 +31,7 @@ jobs:
       - name: .npmrc 파일 생성하기
         run: |
           cat << EOF > "$HOME/.npmrc"
-          //npm.pkg.github.com/:_authToken=${{ secrets.ACCESS_TOKEN }}
+          //npm.pkg.github.com/:_authToken=${{ secrets.GH_ACCESS_TOKEN }}
           @${{ github.repository_owner }}:registry=https://npm.pkg.github.com
           EOF
 
@@ -48,4 +48,4 @@ jobs:
           min-versions-to-keep: 2
           delete-only-pre-releases: true
         env:
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
