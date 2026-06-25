@@ -25,9 +25,6 @@ jobs:
           scope: "@${{ github.repository_owner }}"
           cache: npm
 
-      - name: 의존성 설치하기
-        run: npm ci
-
       - name: .npmrc 파일 생성하기
         run: |
           cat << EOF > "$HOME/.npmrc"
