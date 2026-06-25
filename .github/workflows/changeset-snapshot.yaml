@@ -45,7 +45,7 @@ jobs:
         uses: actions/delete-package-versions@v5
         continue-on-error: true
         with:
-          package-name: "package-test"
+          package-name: "@hookim/package-test"
           package-type: "npm"
           version-name-contains: "dev"
           min-versions-to-keep: 2
