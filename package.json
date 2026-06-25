@@ -1,7 +1,11 @@
 {
   "name": "package-test",
   "version": "0.0.1",
-  "private": true,
+  "scripts": {
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "npm changeset version --snapshot dev && npm changeset publish --no-git-tag-version --tag dev"
+  },
   "devDependencies": {
     "@changesets/cli": "^2.31.0"
   }
