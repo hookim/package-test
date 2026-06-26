@@ -34,6 +34,19 @@ jobs:
           //npm.pkg.github.com/:_authToken=${{ secrets.GH_ACCESS_TOKEN }}
           @${{ github.repository_owner }}:registry=https://npm.pkg.github.com
           EOF
+      - name: dummy changeset 생성하기
+        run: |
+          mkdir -p .changeset
+          CHANGESET=".changeset/ci-snapshot-$(date +%s).md"
+          cat > "$CHANGESET" << 'EOF'
+          ---
+          "@hookim/package-test": patch
+          ---
+
+          dummy
+          EOF
+          echo "Created $CHANGESET (runner only)"
+          cat "$CHANGESET"
 
       - name: snapshot 릴리즈 배포하기
         run: npm run release-dev
