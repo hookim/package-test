@@ -1,5 +1,11 @@
 # @hookim/package-test
 
+## 0.0.3
+
+### Patch Changes
+
+- fe60b05: 버전 3 개발 체인지셋 파일
+
 ## 0.0.2
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
   "name": "@hookim/package-test",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "scripts": {
     "changeset": "changeset",
     "version-packages": "changeset version",
