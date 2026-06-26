@@ -4,7 +4,8 @@
   "scripts": {
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release-dev": "changeset version --snapshot dev && changeset publish --tag dev"
+    "release-dev": "changeset version --snapshot dev && changeset publish --tag dev",
+    "release": "changeset publish"
   },
   "devDependencies": {
     "@changesets/cli": "^2.31.0"

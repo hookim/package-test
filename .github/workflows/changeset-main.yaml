@@ -1,0 +1,44 @@
+name: 배포
+
+on:
+  push:
+    branches:
+      - changesets-main
+
+permissions:
+  contents: write
+  pull-requests: write
+  packages: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://npm.pkg.github.com
+          scope: "@${{ github.repository_owner }}"
+          cache: npm
+
+      - name: 의존성 설치하기
+        run: npm install
+
+      - name: .npmrc 파일 생성하기
+        run: |
+          cat << EOF > "$HOME/.npmrc"
+          //npm.pkg.github.com/:_authToken=${{ secrets.GH_ACCESS_TOKEN }}
+          @${{ github.repository_owner }}:registry=https://npm.pkg.github.com
+          EOF
+
+      - name: 릴리즈 배포하기
+        uses: changesets/action@v1
+        with:
+          publish: npm run release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
